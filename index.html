@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f2ea">
+  <meta name="description" content="JW Property Consultants builds and finds thoughtfully designed homes for the next chapter of your life.">
+  <title>JW Property Consultants | Homes Built for Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f4f2ea;
+      --ink: #20342d;
+      --green: #264b3e;
+      --green-deep: #19372e;
+      --rust: #bd6446;
+      --muted: #777a6d;
+      --line: #d9d8cc;
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); }
+    a { color: inherit; }
+    .site-header {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      display: flex;
+      min-height: 78px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(22px, 7vw, 104px);
+      background: var(--paper);
+      border-bottom: 1px solid rgba(32, 52, 45, .12);
+    }
+    .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      aspect-ratio: 1;
+      place-items: center;
+      color: var(--paper);
+      background: var(--green);
+      font-family: var(--serif);
+      font-size: 19px;
+      letter-spacing: 0;
+    }
+    .brand-name { display: grid; gap: 2px; }
+    .brand-name strong { font-size: 12px; font-weight: 700; letter-spacing: 0; }
+    .brand-name span { color: var(--muted); font-size: 10px; letter-spacing: 0; }
+    .main-nav { display: flex; align-items: center; gap: clamp(18px, 3vw, 42px); }
+    .main-nav a { font-size: 12px; font-weight: 600; text-decoration: none; }
+    .main-nav a:hover { color: var(--rust); }
+    .nav-contact { border-bottom: 1px solid var(--rust); padding-bottom: 4px; }
+
+    .hero {
+      position: relative;
+      display: flex;
+      min-height: min(690px, calc(100svh - 78px));
+      align-items: center;
+      overflow: hidden;
+      background: #6d7164 url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=85") center 54% / cover no-repeat;
+      color: #fff;
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(19, 37, 31, .77) 0%, rgba(19, 37, 31, .5) 43%, rgba(19, 37, 31, .08) 100%);
+      content: "";
+    }
+    .hero-content { position: relative; width: min(720px, 100%); padding: 84px clamp(24px, 10vw, 150px); }
+    .eyebrow { margin: 0 0 20px; color: #d9c99e; font-size: 10px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .hero h1 { max-width: 660px; margin: 0; font-family: var(--serif); font-size: clamp(42px, 6.1vw, 78px); font-weight: 500; line-height: 1.08; }
+    .hero-copy { max-width: 435px; margin: 22px 0 30px; color: rgba(255, 255, 255, .83); font-size: 15px; line-height: 1.8; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0 21px; border: 1px solid transparent; font-size: 11px; font-weight: 700; text-decoration: none; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+    .button-light { background: var(--paper); color: var(--ink); }
+    .button-light:hover { background: #fff; }
+    .button-outline { border-color: rgba(255, 255, 255, .7); color: #fff; }
+    .button-outline:hover { background: #fff; color: var(--ink); }
+
+    .about { padding: clamp(72px, 10vw, 132px) clamp(24px, 10vw, 150px); }
+    .about-inner { display: grid; grid-template-columns: minmax(180px, .72fr) minmax(0, 1.6fr); gap: clamp(36px, 9vw, 130px); max-width: 1170px; margin: 0 auto; }
+    .section-label { margin: 7px 0 0; color: var(--rust); font-size: 10px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+    .about h2, .homes-heading h2 { margin: 0; font-family: var(--serif); font-size: clamp(32px, 4.3vw, 52px); font-weight: 500; line-height: 1.18; }
+    .about-copy p { max-width: 670px; margin: 22px 0 0; color: #62685e; font-size: 14px; line-height: 1.95; }
+    .about-note { display: flex; align-items: center; gap: 13px; margin-top: 30px; color: var(--green); font-size: 11px; font-weight: 700; }
+    .about-note::before { width: 32px; height: 1px; background: var(--rust); content: ""; }
+
+    .ceo { padding: clamp(64px, 8vw, 100px) clamp(24px, 10vw, 150px); background: #e6e5dc; }
+    .ceo-inner { display: grid; max-width: 1040px; grid-template-columns: minmax(230px, .78fr) minmax(0, 1.3fr); align-items: center; gap: clamp(36px, 8vw, 105px); margin: 0 auto; }
+    .ceo-portrait { display: grid; width: 100%; max-width: 340px; aspect-ratio: .84; place-items: center; border: 1px solid #c8c9bb; background: repeating-linear-gradient(135deg, rgba(38, 75, 62, .045) 0 1px, transparent 1px 13px), #eeede5; }
+    .ceo-portrait span { padding: 22px; border: 1px solid #b9bbae; color: var(--green); font-size: 10px; font-weight: 700; letter-spacing: 0; line-height: 1.8; text-align: center; text-transform: uppercase; }
+    .ceo-copy .section-label { margin: 0 0 15px; }
+    .ceo-copy h2 { margin: 0; font-family: var(--serif); font-size: clamp(32px, 4vw, 48px); font-weight: 500; line-height: 1.2; }
+    .ceo-name { margin: 25px 0 0; font-size: 15px; font-weight: 700; }
+    .ceo-bio { max-width: 520px; margin: 10px 0 0; color: #62685e; font-size: 13px; line-height: 1.9; }
+    .ceo-email { display: inline-block; margin-top: 20px; border-bottom: 1px solid var(--rust); padding-bottom: 4px; color: var(--green); font-size: 11px; font-weight: 700; text-decoration: none; }
+    .ceo-email:hover { color: var(--rust); }
+
+    .homes { padding: clamp(66px, 8vw, 105px) clamp(22px, 7vw, 104px) clamp(80px, 10vw, 132px); background: #e9e9df; }
+    .homes-heading { display: flex; max-width: 1260px; align-items: end; justify-content: space-between; gap: 24px; margin: 0 auto 36px; }
+    .homes-heading .section-label { margin-bottom: 13px; }
+    .homes-heading p { max-width: 320px; margin: 0 0 5px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .property-grid { display: grid; max-width: 1260px; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 20px; margin: 0 auto; }
+    .property { min-width: 0; }
+    .property img { display: block; width: 100%; aspect-ratio: 1.38; object-fit: cover; background: #d0d1c5; }
+    .property-info { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-top: 13px; }
+    .property h3 { margin: 0; font-family: var(--serif); font-size: 18px; font-weight: 500; }
+    .property span { flex: 0 0 auto; color: var(--rust); font-size: 9px; font-weight: 700; letter-spacing: 0; text-transform: uppercase; }
+
+    .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 34px clamp(22px, 7vw, 104px); background: var(--green-deep); color: #f4f2ea; }
+    .footer-brand { display: grid; gap: 5px; }
+    .footer-brand strong { font-family: var(--serif); font-size: 20px; font-weight: 500; }
+    .footer-brand span, .copyright { color: rgba(244, 242, 234, .68); font-size: 10px; }
+    .button-rust { background: var(--rust); color: #fff; }
+    .button-rust:hover { background: #a94f34; }
+
+    @media (min-width: 1500px) {
+      .hero-content { padding-left: max(150px, calc((100vw - 1200px) / 2)); }
+    }
+    @media (max-width: 760px) {
+      .site-header { min-height: 70px; padding-inline: 20px; }
+      .main-nav { gap: 16px; }
+      .main-nav a { font-size: 11px; }
+      .hero { min-height: 600px; background-position: 58% center; }
+      .hero-content { padding: 70px 27px; }
+      .hero::before { background: linear-gradient(90deg, rgba(19, 37, 31, .78), rgba(19, 37, 31, .34)); }
+      .about-inner { grid-template-columns: 1fr; gap: 20px; }
+      .section-label { margin-top: 0; }
+      .ceo-inner { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+      .ceo-portrait { max-width: 390px; aspect-ratio: 1.15; }
+      .property-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px 14px; }
+      .property-info { align-items: flex-start; flex-direction: column; gap: 5px; }
+      .homes-heading { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 440px) {
+      .brand { gap: 8px; }
+      .brand-mark { width: 37px; }
+      .brand-name strong { font-size: 10px; }
+      .brand-name span { font-size: 9px; }
+      .main-nav { gap: 12px; }
+      .main-nav a { font-size: 10px; }
+      .main-nav .nav-contact { display: none; }
+      .property-grid { grid-template-columns: 1fr; }
+      .property img { aspect-ratio: 1.55; }
+      .site-footer { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="JW Property Consultants home">
+      <span class="brand-mark" aria-hidden="true">JW</span>
+      <span class="brand-name"><strong>JW PROPERTY</strong><span>CONSULTANTS</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#about">About</a>
+      <a href="#homes">Our homes</a>
+      <a class="nav-contact">jameswatkinshomes@tutamail.com</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">Building with care. Finding your place.</p>
+        <h1 id="hero-title">A better place to call home.</h1>
+        <p class="hero-copy">Thoughtfully built homes and considered property guidance, from the first plan to the front door.</p>
+        <div class="hero-actions">
+          <a class="button button-light" href="#about">About JW</a>
+          <a class="button button-outline" href="#homes">Explore our homes</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="about-inner">
+        <p class="section-label">A little about us</p>
+        <div class="about-copy">
+          <h2 id="about-title">Good homes start with good people.</h2>
+          <p>JW Property Consultants brings construction and home sales together with one simple aim: to make finding or building a home feel more considered. We care about sound workmanship, clear guidance and the small details that make a house feel like yours.</p>
+          <p>Whether you are looking for a place to settle or planning a home of your own, we are here to help you take the next step with confidence.</p>
+          <div class="about-note">Thoughtful homes. Straightforward advice.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ceo" id="ceo" aria-labelledby="ceo-title">
+      <div class="ceo-inner">
+        <div class="ceo-portrait" role="img" aria-label="Space for the CEO's portrait"><span>CEO<br>Portrait</span></div>
+        <div class="ceo-copy">
+          <p class="section-label">A message from our leadership</p>
+          <h2 id="ceo-title">A personal welcome.</h2>
+          <p class="ceo-name">CEO name</p>
+          <p class="ceo-bio">Add a short introduction from the CEO here: their experience, what they value, and the kind of homes they want JW Property Consultants to create.</p>
+          <a class="ceo-email" href="mailto:?subject=Message%20for%20the%20CEO">CEO email address</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="homes" id="homes" aria-labelledby="homes-title">
+      <div class="homes-heading">
+        <div>
+          <p class="section-label">A place for what comes next</p>
+          <h2 id="homes-title">Find your kind of home.</h2>
+        </div>
+        <p>A glimpse at the homes and spaces we love. Get in touch to ask about availability and details.</p>
+      </div>
+      <div class="property-grid">
+        <article class="property"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Contemporary home with a landscaped front garden" loading="lazy"><div class="property-info"><h3>Garden House</h3><span>Family home</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Modern home with warm wood and glass details" loading="lazy"><div class="property-info"><h3>Willow Residence</h3><span>Modern living</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Bright contemporary house framed by greenery" loading="lazy"><div class="property-info"><h3>The Courtyard</h3><span>Contemporary</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Two-storey home with a welcoming front entrance" loading="lazy"><div class="property-info"><h3>Oakfield House</h3><span>Family home</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Modern home with a spacious outdoor terrace" loading="lazy"><div class="property-info"><h3>Terrace House</h3><span>Indoor-outdoor</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Sleek home exterior with a calm garden setting" loading="lazy"><div class="property-info"><h3>Meadow Place</h3><span>Modern living</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Light-filled home with clean architectural lines" loading="lazy"><div class="property-info"><h3>Parkside Home</h3><span>Contemporary</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Elegant residence set among established trees" loading="lazy"><div class="property-info"><h3>Willowbank</h3><span>Garden home</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Inviting modern house with an open, airy design" loading="lazy"><div class="property-info"><h3>Hearth House</h3><span>Family home</span></div></article>
+        <article class="property"><img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Distinctive contemporary residence with a generous facade" loading="lazy"><div class="property-info"><h3>Newleaf Residence</h3><span>Modern living</span></div></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand"><strong>JW Property Consultants</strong><span>Construction &amp; homes, thoughtfully brought together.</span></div>
+    <span class="copyright">&copy; 2026 JW Property Consultants</span>
+    <a class="button button-rust">jameswatkinshomes@tutamail.com</a>
+  </footer>
+</body>
+</html>
